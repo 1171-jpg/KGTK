@@ -1,0 +1,387 @@
+<head>
+            <style> body { margin: 0; } </style>
+            <script src="https://cdn.jsdelivr.net/npm/d3-color@3"></script>
+            <script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
+            <script src="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@3"></script>
+            <script src="https://cdn.jsdelivr.net/npm/d3-scale@4"></script>
+            <script src="https://unpkg.com/force-graph"></script>
+            <!--<script src="../../dist/force-graph.js"></script>-->
+            </head>
+            <body>
+            <div id="graph"></div>
+            <script>        
+               const j = {
+    "links": [
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/carry_passengers",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/drive_down_street",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/drive_to_city",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/go_into_town",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/near_terminal",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/seat_capacity",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/stop_at_corner",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/take_across_country",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/transport_many_people_at_once",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/transport_people",
+            "label": "/r/CapableOf",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/glass_windows",
+            "label": "/r/HasA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/many_seats",
+            "label": "/r/HasA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/parts_made_of_plastic",
+            "label": "/r/HasA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/windows",
+            "label": "/r/HasA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/car",
+            "label": "/r/IsA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/form_of_mass_transit",
+            "label": "/r/IsA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/form_of_mass_transportation",
+            "label": "/r/IsA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/form_of_public_transportation",
+            "label": "/r/IsA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/form_of_transportation",
+            "label": "/r/IsA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/heavier_than_typewriter_keyboard",
+            "label": "/r/IsA",
+            "width": 0.5,
+            "color": "#000000"
+        },
+        {
+            "source": "/c/en/bus",
+            "target": "/c/en/mode_of_public_transportation",
+            "label": "/r/IsA",
+            "width": 0.5,
+            "color": "#000000"
+        }
+    ],
+    "nodes": [
+        {
+            "id": "/c/en/form_of_mass_transit",
+            "label": "/c/en/form_of_mass_transit",
+            "tooltip": "/c/en/form_of_mass_transit",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/transport_many_people_at_once",
+            "label": "/c/en/transport_many_people_at_once",
+            "tooltip": "/c/en/transport_many_people_at_once",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/car",
+            "label": "/c/en/car",
+            "tooltip": "/c/en/car",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/form_of_public_transportation",
+            "label": "/c/en/form_of_public_transportation",
+            "tooltip": "/c/en/form_of_public_transportation",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/carry_passengers",
+            "label": "/c/en/carry_passengers",
+            "tooltip": "/c/en/carry_passengers",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/windows",
+            "label": "/c/en/windows",
+            "tooltip": "/c/en/windows",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/parts_made_of_plastic",
+            "label": "/c/en/parts_made_of_plastic",
+            "tooltip": "/c/en/parts_made_of_plastic",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/mode_of_public_transportation",
+            "label": "/c/en/mode_of_public_transportation",
+            "tooltip": "/c/en/mode_of_public_transportation",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/form_of_transportation",
+            "label": "/c/en/form_of_transportation",
+            "tooltip": "/c/en/form_of_transportation",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/take_across_country",
+            "label": "/c/en/take_across_country",
+            "tooltip": "/c/en/take_across_country",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/form_of_mass_transportation",
+            "label": "/c/en/form_of_mass_transportation",
+            "tooltip": "/c/en/form_of_mass_transportation",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/stop_at_corner",
+            "label": "/c/en/stop_at_corner",
+            "tooltip": "/c/en/stop_at_corner",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/transport_people",
+            "label": "/c/en/transport_people",
+            "tooltip": "/c/en/transport_people",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/drive_down_street",
+            "label": "/c/en/drive_down_street",
+            "tooltip": "/c/en/drive_down_street",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/drive_to_city",
+            "label": "/c/en/drive_to_city",
+            "tooltip": "/c/en/drive_to_city",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/go_into_town",
+            "label": "/c/en/go_into_town",
+            "tooltip": "/c/en/go_into_town",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/bus",
+            "label": "/c/en/bus",
+            "tooltip": "/c/en/bus",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/seat_capacity",
+            "label": "/c/en/seat_capacity",
+            "tooltip": "/c/en/seat_capacity",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/many_seats",
+            "label": "/c/en/many_seats",
+            "tooltip": "/c/en/many_seats",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/near_terminal",
+            "label": "/c/en/near_terminal",
+            "tooltip": "/c/en/near_terminal",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/glass_windows",
+            "label": "/c/en/glass_windows",
+            "tooltip": "/c/en/glass_windows",
+            "size": 4.0,
+            "orig_size": 4.0
+        },
+        {
+            "id": "/c/en/heavier_than_typewriter_keyboard",
+            "label": "/c/en/heavier_than_typewriter_keyboard",
+            "tooltip": "/c/en/heavier_than_typewriter_keyboard",
+            "size": 4.0,
+            "orig_size": 4.0
+        }
+    ]
+}
+              const Graph = ForceGraph()
+              (document.getElementById('graph'))
+                .graphData(j)
+                .nodeId('id')
+                .nodeLabel('tooltip')
+                .nodeVal('size')
+                        .nodeAutoColorBy('group')
+                        .linkWidth((link) => link.width)
+                            .nodeCanvasObject((node, ctx, globalScale) => {
+                      const label = node.label;
+                      const fontSize = 12/globalScale;
+                      ctx.font = `${fontSize}px Sans-Serif`;
+                      const textWidth = ctx.measureText(label).width;
+                      const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
+                      
+                      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                      ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - 10 - 
+                      bckgDimensions[1] / 2, ...bckgDimensions);
+                      ctx.textAlign = 'center';
+                      ctx.textBaseline = 'middle';
+                      
+                        ctx.fillStyle = (node.color);
+                        
+                      ctx.fillText(label, node.x, node.y - 10);
+                      
+                      ctx.beginPath(); ctx.arc(node.x, node.y, node.size, 0, 2 * Math.PI, false);  ctx.fill();
+                      node.__bckgDimensions = bckgDimensions; // to re-use in nodePointerAreaPaint
+                      })        .linkColor((link) => link.color)                        .linkCanvasObjectMode(() => 'after')
+                .linkCanvasObject((link, ctx) => {
+                  const MAX_FONT_SIZE = 4;
+                  const LABEL_NODE_MARGIN = Graph.nodeRelSize() * 1.5;
+                  const start = link.source;
+                  const end = link.target;
+                  // ignore unbound links
+                  if (typeof start !== 'object' || typeof end !== 'object') return;
+                  // calculate label positioning
+                  const textPos = Object.assign(...['x', 'y'].map(c => ({
+                    [c]: start[c] + (end[c] - start[c]) / 2 // calc middle point
+                  })));
+                  const relLink = { x: end.x - start.x, y: end.y - start.y };
+                  const maxTextLength = Math.sqrt(Math.pow(relLink.x, 2) + Math.pow(relLink.y, 2)) - LABEL_NODE_MARGIN * 2;
+                  let textAngle = Math.atan2(relLink.y, relLink.x);
+                  // maintain label vertical orientation for legibility
+                  if (textAngle > Math.PI / 2) textAngle = -(Math.PI - textAngle);
+                  if (textAngle < -Math.PI / 2) textAngle = -(-Math.PI - textAngle);
+                  const label = `${link.label}`;
+                  // estimate fontSize to fit in link length
+                  const color = `rgba(${link.color}, 0.8)`;
+                  ctx.font = '1px Sans-Serif';
+                  const fontSize = Math.min(MAX_FONT_SIZE, maxTextLength / ctx.measureText(label).width);
+                  ctx.font = `${fontSize}px Sans-Serif`;
+                  const textWidth = ctx.measureText(label).width;
+                  const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
+                  // draw text label (with background rect)
+                  ctx.save();
+                  ctx.translate(textPos.x, textPos.y);
+                  ctx.rotate(textAngle);
+                  ctx.fillStyle = 'rgba(255, 255, 255)';
+                  ctx.fillRect(- bckgDimensions[0] / 2, - bckgDimensions[1] / 2, ...bckgDimensions);
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'middle';
+                  ctx.fillStyle = 'darkgrey';
+                  ctx.font = '3px Arial';
+                  ctx.fillText(label, 0, 0);
+                  ctx.restore();
+                });
+                  </script>
+            </body>
